@@ -7,7 +7,7 @@ function ingresoDatos (){
     if (edad>=18){
         alert("Bienvenido " + nombre + " " + apellido + ".");
         
-let can_remeras = parseInt(prompt("Ingrese la cantidad de remeras que desea: \n(El precio por unidad es de $ 500.)" ));
+var can_remeras = parseInt(prompt("Ingrese la cantidad de remeras que desea: \n(El precio por unidad es de $ 500.)" ));
 
 let precio_remera = 500
 var suma_final = precio_remera * can_remeras;
@@ -34,31 +34,161 @@ alert("El precio final es de: $ " + precio_remera)
 }
 
 
-//ingreso variedad
-var col_remeras = prompt("Ingrese el color de remera que necesita:\nEl stock disponibles es el siguiente: negro / blanco / rojo / azul");
+//ingreso variedad remeras
+var col_remeras = prompt("Ingrese el color de remera que necesita:\nEl stock disponibles es el siguiente: negro / blanco / rojo / azul / amarillo / verde / celeste");
     switch(col_remeras.toLowerCase()){
     case "negro":
-        alert ("Color de remera 'Negro' elegida");
+        alert ("Color de remera 'Negro' elegida.");
         break;
     case "blanco":
-            alert("Color de remera 'Blanca' elegida");
+            alert("Color de remera 'Blanca' elegida.");
         break;
     case "rojo":
-            alert("Color de remera 'Rojo' elegida");
+            alert("Color de remera 'Rojo' elegida.");
         break;
     case "azul":
-            alert("Color de remera 'Azul' elegida")
+            alert("Color de remera 'Azul' elegida.");
         break;
+    case "amarillo":
+        alert("Color de remera 'Amarillo' elegida.");
+        break;
+    case "verde":
+        alert("Color de remera 'Verde' elegida.");
+        break;
+    case "celeste":
+        alert("color de remera 'Celeste' elegida.");
     default:
             alert("Color no disponible, por favor continue y realice su pedido en caja para otra alternativa a la elegida.");
     }
 
 
+// agregado arrays
+
+
+alert ("A continuacion si desea agregue a su pedido el tipo de tinta que desea utilizar para imprimir sus remeras");
+
+const productos = [{item:1, nombre:"Tinta al Agua", precio:60}, {item:2, nombre:"Tinta Plastica", precio:80}, {item:3, nombre:"Tinta Vinilica", precio:70}, {item:4, nombre:"Tinta 3-D", precio:120}, {item:5, nombre:"Tinta Reflectiva", precio:150}, {item:6, nombre:"Tinta Fluorescente", precio:140}
+];
+
+//agregado constructor
+
+class Tintas {
+    constructor(suministro) {
+        this.item = suministro.item;
+        this.nombre = suministro.nombre;
+        this.precio = suministro.precio;
+        this.impuestoGravamen = 10.5;
+    }
+
+    impuesto() {
+        this.precio = this.precio + ((this.precio * this.impuestoGravamen) / 100);
+    }
+}
+
+const carrito = [];
+
+function agregarTinta(producto) {
+    carrito.push(producto);
+    alert ("Tinta adicional agregada.");
+    console.log("Tinta adicional agregada.");
+    console.log(carrito);
+}
+
+function eliminarTinta(item) {
+    let pos = carrito.indexOf((elemento) => elemento.item == item);
+    carrito.splice(pos, 1);
+    alert ("Tinta adicional eliminada.");
+    console.log("Tinta adicional eliminada.");
+    console.log(carrito);
+}
+
+function buscarTinta(item) {
+    return productos.find((elemento) => elemento.item == item);
+}
+
+function cargarProductosCarrito() {
+    let salida = "Ingrese el numero correspondiente al tipo de tinta que desea aplicar, luego pulse Cancelar para terminar la carga:\n\n";
+
+    for (let sumser of productos) {
+        salida += sumser.item + " - " + sumser.nombre + " : $" + sumser.precio + "\n";
+    }
+
+    let id_tintas = 0;
+
+    while (id_tintas != null) {
+        let id_tintas = prompt(salida);
+
+        if (id_tintas != null) {
+            id_tintas = parseInt(id_tintas);
+            let producto = buscarTinta(id_tintas);
+            agregarTinta(producto);
+        } else {
+            break;
+        }
+    }
+}
+
+function mostrarProductosAEliminar() {
+    let salida = "";
+
+    if (carrito.length > 0) {
+        salida = "Seleccione la tinta a eliminar con su numero correspondiente si lo desea o pulse Cancelar para continuar con el pedido.\n\n";
+
+        for (let producto of carrito) {
+            salida += producto.item + " - " + producto.nombre + " : $" + producto.precio + "\n";
+        }
+
+        let item_tinta = prompt(salida);
+
+        if (item_tinta != null) {
+            item_tinta = parseInt(item_tinta);
+            eliminarTinta(item_tinta);
+        }
+
+        mostrarProductosCarrito();
+    } else {
+        salida = "\nTintas seleccionadas:\nNo selecciono ninguna opcion adicional al pedido.\n\nPulse OK para continuar";
+        alert(salida);
+    }    
+}
+
+function mostrarProductosCarrito() {
+    let salida = "";
+
+    if (carrito.length > 0) {
+        salida = "\n\nAgregado de tipo de tintas seleccionadas a imprimir:\n";
+        var total_pagar = 0;
+
+        for (let producto_carrito of carrito) {
+            let producto = new Tintas(producto_carrito);
+            producto.impuesto();
+            total_pagar += producto.precio;
+            salida += producto.item + " - " + producto.nombre + " : $" + producto.precio + " (Impuestos incluidos)\n";
+        }
+        
+        let sumaFinal = total_pagar * can_remeras;
+    
+        salida += "\nEl costo final de tintas relativo a las cantidades de remeras ya previamente agregadas es de: $ " + Math.round(sumaFinal);
+    } else {
+        salida = "\n\n(Recuerde que no selecciono ningun adicional de impresion.)"; 
+    }
+
+    return salida;
+}
+
+cargarProductosCarrito();
+mostrarProductosAEliminar();
+
+
+let final = suma_final + mostrarProductosCarrito();
 salida = "Gracias " + nombre + " " + apellido +"\n";
 salida += "Su pedido de " + can_remeras + " remeras en color " + col_remeras + " fue agregado. \n";
-salida += "El costo final con el descuento incluido si corresponde, es de: $ " + suma_final + "\n";
+salida += "El costo final con el descuento incluido si corresponde es de: $ " + final + +"\n";
 
 alert (salida);
+
+
+// condicional
 let ingresoRetiro = alert("Prosiga para recibir su numero y sera atendido.")
 
 //TURNO
