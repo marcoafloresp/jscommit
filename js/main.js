@@ -97,8 +97,8 @@ function agregarTinta(producto) {
 function eliminarTinta(item) {
     let pos = carrito.indexOf((elemento) => elemento.item == item);
     carrito.splice(pos, 1);
-    alert ("Tinta adicional eliminada.");
-    console.log("Tinta adicional eliminada.");
+    alert ("Tinta adicional seleccionada eliminada.");
+    console.log("Tinta adicional seleccionada eliminada.");
     console.log(carrito);
 }
 
@@ -106,7 +106,7 @@ function buscarTinta(item) {
     return productos.find((elemento) => elemento.item == item);
 }
 
-function cargarProductosCarrito() {
+function tintasA_cargar() {
     let salida = "Ingrese el numero correspondiente al tipo de tinta que desea aplicar, luego pulse Cancelar para terminar la carga:\n\n";
 
     for (let sumser of productos) {
@@ -128,7 +128,7 @@ function cargarProductosCarrito() {
     }
 }
 
-function mostrarProductosAEliminar() {
+function tintasA_eliminar() {
     let salida = "";
 
     if (carrito.length > 0) {
@@ -147,7 +147,7 @@ function mostrarProductosAEliminar() {
 
         mostrarProductosCarrito();
     } else {
-        salida = "\nTintas seleccionadas:\nNo selecciono ninguna opcion adicional al pedido.\n\nPulse OK para continuar";
+        salida = "\nTintas seleccionadas:\nNo selecciono ninguna opcion adicional al pedido.\n\nPresiones 'OK' para continuar.";
         alert(salida);
     }    
 }
@@ -170,20 +170,20 @@ function mostrarProductosCarrito() {
     
         salida += "\nEl costo final de tintas relativo a las cantidades de remeras ya previamente agregadas es de: $ " + Math.round(sumaFinal);
     } else {
-        salida = "\n\n(Recuerde que no selecciono ningun adicional de impresion.)"; 
+        salida = "\n\n(Recuerde que no selecciono ningun adicional de impresion.)\n\nPresiones 'OK' para continuar."; 
     }
 
     return salida;
 }
 
-cargarProductosCarrito();
-mostrarProductosAEliminar();
+tintasA_cargar();
+tintasA_eliminar();
 
 
 let final = suma_final + mostrarProductosCarrito();
 salida = "Gracias " + nombre + " " + apellido +"\n";
 salida += "Su pedido de " + can_remeras + " remeras en color " + col_remeras + " fue agregado. \n";
-salida += "El costo final con el descuento incluido si corresponde es de: $ " + final + +"\n";
+salida += "El costo final con el descuento incluido si corresponde es de: $ " + final + "\n";
 
 alert (salida);
 
