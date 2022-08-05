@@ -28,17 +28,17 @@ let seleRem = document.getElementById("seleRem");
 
 let bienvenida =  "Bienvenido/a, a continuacion le pediremos sus datos para avanzar en su pedido:"
 alert (bienvenida);
-function ingresoDatos (){
-    let nombre = prompt("Ingrese su nombre:");
-    let apellido = prompt("Ingrese su apellido:");
-    let edad = parseInt(prompt("Ingrese su edad:"));
+
+let nombre = prompt("Ingrese su nombre:");
+let apellido = prompt("Ingrese su apellido:");
+let edad = parseInt(prompt("Ingrese su edad:"));
 /////////// ingreso datos
-    datoNombre.innerHTML = "Nombre: " + nombre;
-    datoApellido.innerHTML = "Apellido: " + apellido;
+datoNombre.innerHTML = "Nombre: " + nombre;
+datoApellido.innerHTML = "Apellido: " + apellido;
 //////////
 
-    if (edad>=18){
-        alert("Bienvenido " + nombre + " " + apellido + ".");
+if (edad>=18){
+    alert("Bienvenido " + nombre + " " + apellido + ".");
         
 var can_remeras = parseInt(prompt("Ingrese la cantidad de remeras que desea: \n(El precio por unidad es de $ 500.)" ));
 
@@ -76,34 +76,16 @@ document.body.appendChild(seleRem);
 
 //ingreso variedad remeras
 var col_remeras = prompt("Ingrese el color de remera que necesita:\nEl stock disponibles es el siguiente: negro / blanco / rojo / azul / amarillo / verde / celeste");
-    switch(col_remeras.toLowerCase()){
-    case "negro":
-        alert ("Color de remera 'Negro' elegida.");
-        break;
-    case "blanco":
-            alert("Color de remera 'Blanca' elegida.");
-        break;
-    case "rojo":
-            alert("Color de remera 'Rojo' elegida.");
-        break;
-    case "azul":
-            alert("Color de remera 'Azul' elegida.");
-        break;
-    case "amarillo":
-        alert("Color de remera 'Amarillo' elegida.");
-        break;
-    case "verde":
-        alert("Color de remera 'Verde' elegida.");
-        break;
-    case "celeste":
-        alert("color de remera 'Celeste' elegida.");
-    default:
-            alert("Color no disponible, por favor continue y realice su pedido en caja para otra alternativa a la elegida.");
-    }
 
+const colores = ["negro", "blanco", "rojo", "azul", "amarillo", "verde", "celeste"]
+let find= colores.find(x=> x ===col_remeras);
+if(find){
+    alert("color de remera " + find + " elegida.");
+}else{
+    alert("color no disponible, por favor continue y realice su pedido en caja para otra alternativa a ;a seleccionada");
+}
 
 // agregado arrays
-
 
 alert ("A continuacion si desea agregue a su pedido el tipo de tinta que desea utilizar para imprimir sus remeras");
 
@@ -256,5 +238,3 @@ let contadorA = 1;
     }else{
         alert ("Disculpe: " + nombre + " " + apellido + ".\n"+ "Debe ser mayor de edad para poder ingresar.\nGracias por su visita.");
     }
-}
-ingresoDatos();
