@@ -1,9 +1,42 @@
+function headBienvenida() {
+    variable    = new Array();
+    variable[0] = 'Bienvenido';
+    variable[1] = 'Welcome';
+    variable[2] = 'Velkommen';
+    variable[3] = 'Aloha';
+    variable[4] = 'Vitej';
+    variable[5] = 'Bienvenue';
+    variable[6] = 'Bula';
+    variable[7] = 'Wolkom';
+    variable[8] = 'Yokoso';
+    variable[9] = 'Bem Vindo';
+    variable[10] = 'Shalom';
+    aleatorio   = Math.floor(Math.random() * 10);
+    return variable[aleatorio];
+}
+
+let datoNombre = document.getElementById("nombre");
+let datoApellido = document.getElementById("apellido");
+datoNombre.style.color = "red";
+datoApellido.style.color = "red";
+let div1 = document.getElementById("div1");
+div1.className = "p-3 bg-dark";
+div1.style.color="gray";
+div1.innerHTML = headBienvenida();
+
+let seleRem = document.getElementById("seleRem");
+
 let bienvenida =  "Bienvenido/a, a continuacion le pediremos sus datos para avanzar en su pedido:"
 alert (bienvenida);
 function ingresoDatos (){
     let nombre = prompt("Ingrese su nombre:");
     let apellido = prompt("Ingrese su apellido:");
     let edad = parseInt(prompt("Ingrese su edad:"));
+/////////// ingreso datos
+    datoNombre.innerHTML = "Nombre: " + nombre;
+    datoApellido.innerHTML = "Apellido: " + apellido;
+//////////
+
     if (edad>=18){
         alert("Bienvenido " + nombre + " " + apellido + ".");
         
@@ -33,6 +66,13 @@ precio_remera = precio_remera * can_remeras;
 alert("El precio final es de: $ " + precio_remera)
 }
 
+// agregado elemento
+
+let canRem = document.createElement("p")
+canRem.innerHTML = "Su cantidad elegida es de: " + can_remeras + " unidad/es.";
+canRem.className="bg-black text-white p-1";
+seleRem.append(canRem);
+document.body.appendChild(seleRem);
 
 //ingreso variedad remeras
 var col_remeras = prompt("Ingrese el color de remera que necesita:\nEl stock disponibles es el siguiente: negro / blanco / rojo / azul / amarillo / verde / celeste");
