@@ -24,7 +24,15 @@ function agregarDatosClientes() {
     let apellidoError = document.getElementById("apellidoError");
     let cantidad = document.getElementById("canRemeras").value;
     let canError = document.getElementById("canError");
-    let totalRemera = document.getElementById("totalRemera").value;
+
+    localStorage.setItem("Nombre", nombre);
+    localStorage.setItem("Apellido", apellido);
+    localStorage.setItem("Cantidad de remeras", cantidad);
+
+/*     document.getElementById("nombre").value ="";
+    document.getElementById("apellido").value =""; */
+
+    //let totalRemera = document.getElementById("totalRemera").value;
     
     if (nombre == "") {
         nombreError.innerHTML = "Por favor complete la casilla Nombre para realizar su pedido!";
@@ -56,6 +64,7 @@ let precio_remera = 500;
 var suma_final = precio_remera * cantidad;
 console.log(suma_final);
 document.getElementById("totalRemera").value = suma_final;
+
 }
 
 
