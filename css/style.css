@@ -1,0 +1,11 @@
+.backFondo{
+    background-color: rgb(164, 212, 196);
+}
+.tituloCabe{
+    background-color: rgb(105, 152, 142);
+    padding: 1rem;
+}
+.pedidoCabe{
+    background-color: rgb(150, 177, 173);
+    padding: 0.5rem;
+}
