@@ -67,6 +67,7 @@ document.getElementById("totalRemera").value = suma_final;
 
 }
 
+//ingreso array productos para carrito
 const coloresRemeras = [
     {id:1, vinilo:"negro", imagen:"negro.png", precio: 1050},
     {id:2, vinilo:"blanco", imagen:"blanco.jpeg", precio: 1050},
@@ -89,6 +90,7 @@ const coloresRemeras = [
     {id:19, vinilo:"fuscia", imagen:"fucsia.jpeg", precio: 1050},
 ]
 
+// seccion localStorage
 function guardarColoresRemLS(coloresRemeras){
     localStorage.setItem("coloresRemeras", JSON.stringify(coloresRemeras));
 }
@@ -116,6 +118,8 @@ function agregarColorLocal(id){
     actualizarBotonCarrito();
 }
 
+//seccion localStorage carrito
+
 function actualizarBotonCarrito(){
     const colores_carrito = cargaColoresRemCarrito();
     let total = colores_carrito.length;
@@ -126,6 +130,7 @@ function actualizarBotonCarrito(){
   </button>`;
   document.getElementById("botonCompra").innerHTML = contenido;
 }
+// cards array productos y boton carrito
 
 function renderColores(){
     const coloresRemeras = cargaColoresRemLS();
@@ -145,10 +150,11 @@ function renderColores(){
     });
     document.getElementById("coloresRemeras").innerHTML = datosCard;
 }
-
+//llamado funciones
 guardarColoresRemLS(coloresRemeras);
 renderColores();
 actualizarBotonCarrito();
 
+//eventos de usuario
 document.getElementById("botonEnviar").addEventListener("click", agregarDatosClientes);
 document.getElementById("botonCantidad").addEventListener("click", agregarDatosClientes);
