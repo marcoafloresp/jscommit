@@ -101,8 +101,11 @@ function cargaColoresRemLS(){
 function guardarColoresRemCarrito(coloresRemeras){
     localStorage.setItem("Colores_carrito", JSON.stringify(coloresRemeras));
 }
+
+//funcion de carga estado carrito producto operador L.
+
 function cargaColoresRemCarrito(){
-    return JSON.parse(localStorage.getItem("Colores_carrito"))||[];
+    return JSON.parse(localStorage.getItem("Colores_carrito")) || [];
 }
 
 function buscarColor(id){
