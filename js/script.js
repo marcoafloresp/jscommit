@@ -164,13 +164,13 @@ function renderColores(){
     
     coloresRemeras.forEach((coloresR) => {
         datosCard += `
-        <div class="col-md-3">
-        <div class="card text-bg-dark mb-3 text-center">
-        <img src="imagenes/${coloresR.imagen}" class="card-img-top" alt="${coloresR.vinilo}">
+        <div class="col-md-2">
+        <div class="card text-bg-warning bg-transparent border-success mb-3 p-2 text-center">
+        <img src="imagenes/${coloresR.imagen}" class="card-img-top rounded-circle" alt="${coloresR.vinilo}">
         <div class="card-body">
-          <h5 class="card-title">${coloresR.vinilo}</h5>
-          <p class="card-text">$${coloresR.precio}</p>
-          <a href="#" class="btn btn-info" onclick="agregarColorLocal(${coloresR.id})">Agregar</a>
+          <h5 class="card-title fs-6">${coloresR.vinilo}</h5>
+          <p class="card-text fs-6">$${coloresR.precio}</p>
+          <a href="#" class="btn btn-info btn-sm" onclick="agregarColorLocal(${coloresR.id})">Agregar</a>
         </div>
       </div></div>`
     });
