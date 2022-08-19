@@ -75,6 +75,7 @@ document.getElementById("totalRemera").value = suma_final;
 
 let formaPago = document.getElementById("formaPago").value;
 
+//condicional simpli
 formaPago == "TARJETA" ? pagoTarjeta() : pagoEfectivo();
 
 function pagoEfectivo(){
