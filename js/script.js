@@ -29,6 +29,12 @@ function agregarDatosClientes() {
     localStorage.setItem("Apellido", apellido);
     localStorage.setItem("Cantidad de remeras", cantidad);
 
+    //ingreso fecha de ingreso nombre
+    
+    const fechaActual = nombre && new Date();
+
+    document.getElementById("muestraDatos").innerHTML = `<p class="alert alert-success" role="alert">${fechaActual}</p>`;
+
 /*     document.getElementById("nombre").value ="";
     document.getElementById("apellido").value =""; */
 
@@ -64,6 +70,25 @@ let precio_remera = 500;
 var suma_final = precio_remera * cantidad;
 console.log(suma_final);
 document.getElementById("totalRemera").value = suma_final;
+
+//funcion descuento efectivo//
+
+let formaPago = document.getElementById("formaPago").value;
+
+formaPago == "TARJETA" ? pagoTarjeta() : pagoEfectivo();
+
+function pagoEfectivo(){
+    return ((suma_final *5)/100);
+}
+document.getElementById("resultadoPago").value = pagoEfectivo;
+
+
+function pagoTarjeta() {
+    document.getElementById("resultadoPago").innerHTML = `<p class="alert alert-danger" role="alert">Su forma de pago no posee ningun descuento</p>`;
+}
+
+pagoEfectivo();
+pagoTarjeta();
 
 }
 

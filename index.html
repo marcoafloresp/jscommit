@@ -30,6 +30,10 @@
                 <div id="apellidoError" class="form-text"></div>
                 </div>
                 <button type="button" id="botonEnviar" class="btn btn-primary">Enviar</button>
+                <br><br>
+                <div>Bienvenido, su ingreso queda registrado en el dia:
+                </div>
+                <div id="muestraDatos"></div>
             </form>
         </div> 
         <div class="col-md-3 coloresRem p-1">
@@ -45,6 +49,16 @@
                 </div>
                 <button type="button" id="botonCantidad" class="btn btn-primary">Calcular total</button>
             </form>
+            <br><br>
+            <div>Eliga la forma de su pago: (en efectivo tiene un descuento del % 5.</div>
+            <div class="mb-3">
+                <label for="formaPago" class="form-label">Por favor eliga su opcion:</label>
+                <select class="form-control" id="formaPago">
+                    <option value="TARJETA">Pago con tarjeta de credito</option>
+                    <option value="EFECTIVO">Pago en efectivo</option>
+                </select>
+                <div id="resultadoPago"></div>
+            </div>
         </div>
         <div class="row col-md-6">
             <div class="col-md-6">
