@@ -78,17 +78,14 @@ let formaPago = document.getElementById("formaPago").value;
 formaPago == "TARJETA" ? pagoTarjeta() : pagoEfectivo();
 
 function pagoEfectivo(){
-    return ((suma_final *5)/100);
+    let descuentoEfectivo = ((suma_final * 5)/100);
+    let sumaFinal = suma_final - descuentoEfectivo;
+    document.getElementById("resultadoPago").innerHTML = `<p class="alert alert-success" role="alert">El precio final es de $${sumaFinal}</p>`;
 }
-document.getElementById("resultadoPago").value = pagoEfectivo;
-
 
 function pagoTarjeta() {
-    document.getElementById("resultadoPago").innerHTML = `<p class="alert alert-danger" role="alert">Su forma de pago no posee ningun descuento</p>`;
+    document.getElementById("resultadoPago").innerHTML = `<p class="alert alert-danger" role="alert">Este sistema de pago no posee beneficio.</p>`;
 }
-
-pagoEfectivo();
-pagoTarjeta();
 
 }
 
