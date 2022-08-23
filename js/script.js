@@ -87,7 +87,15 @@ function pagoEfectivo(){
 function pagoTarjeta() {
     document.getElementById("resultadoPago").innerHTML = `<p class="alert alert-danger" role="alert">Este sistema de pago no posee beneficio.</p>`;
 }
+// pop-up (libreria sweetalert2) confirmacion pedido cantidad unidades para luego seguir con pedido.
 
+Swal.fire({
+    position: 'top-center',
+    icon: 'success',
+    title: 'Gracias por realizar el pedido, para finalizar eliga los colores y prosiga con el carrito de compras',
+    showConfirmButton: true,
+    confirmButtonText: "Continuar",
+  })
 }
 
 //ingreso array productos para carrito
@@ -164,23 +172,55 @@ function renderColores(){
     
     coloresRemeras.forEach((coloresR) => {
         datosCard += `
-        <div class="col-md-2">
+        <div id="${coloresR.id}" class=" coloresCont col-md-2">
         <div class="card text-bg-warning bg-transparent border-success mb-3 p-2 text-center">
         <img src="imagenes/${coloresR.imagen}" class="card-img-top rounded-circle" alt="${coloresR.vinilo}">
         <div class="card-body">
           <h5 class="card-title fs-6">${coloresR.vinilo}</h5>
           <p class="card-text fs-6">$${coloresR.precio}</p>
-          <a href="#" class="btn btn-info btn-sm" onclick="agregarColorLocal(${coloresR.id})">Agregar</a>
+          <a href="#" class="btn btn-info btn-sm btnAgregado" onclick="agregarColorLocal(${coloresR.id})">Agregar</a>
         </div>
       </div></div>`
     });
+
     document.getElementById("coloresRemeras").innerHTML = datosCard;
 }
+
+function sumarACarrito() {
+    const materialCarrito = cargaColoresRemCarrito();
+    const botonesArray = document.querySelectorAll(".btnAgregado");
+  
+    botonesArray.forEach((boton) => {
+      boton.addEventListener("click", (e) => {
+        let itemId = parseInt(e.target.closest(".coloresCont").id);
+        let pos = materialCarrito.findIndex((coloresR) => coloresR.id === itemId);
+        if (pos > -1) {
+          materialCarrito[pos].cantidad += 1;
+        } else {
+          let item = coloresRemeras.find((coloresR) => coloresR.id === itemId);
+          item.cantidad = 1;
+          materialCarrito.push(item);
+        }
+        // libreria referencia pop-up materiales agregados al carrito
+        Toastify({
+            text: "Material Agregado",
+            className: "info",
+            duration: 4000,
+            style: {
+              background: "gray",
+            }
+          }).showToast();
+        cargaColoresRemCarrito(materialCarrito);
+      });
+    });
+  }
 //llamado funciones
 guardarColoresRemLS(coloresRemeras);
 renderColores();
 actualizarBotonCarrito();
+sumarACarrito();
 
 //eventos de usuario
 document.getElementById("botonEnviar").addEventListener("click", agregarDatosClientes);
 document.getElementById("botonCantidad").addEventListener("click", agregarDatosClientes);
+document.querySelectorAll(".btnAgregado").addEventListener("click", actualizarBotonCarrito);
