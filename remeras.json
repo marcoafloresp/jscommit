@@ -1,0 +1,8 @@
+[
+    {"id":1, "nombre":"Remera manga larga combinada a eleccion.", "descripcion":"Escote redondo - Estilo Slim fit, se ajusta suavemente en brazos y torso - Composición de Algodón 96% y Elastano 4%.", "imagen":"D_NQ_NP_2X_603247-MLA46318442623_062021-F.webp"},
+    {"id":2, "nombre":"Remera lisa manga larga.", "descripcion":"Escote redondo - Estilo Slim fit (entallada) se ajusta suavemente en brazos y torso - Composición de Algodón 80% y Elastano 20%.", "imagen":"D_NQ_NP_2X_732214-MLA31115280674_062019-F.webp"},
+    {"id":3, "nombre":"Remera corta algodon.", "descripcion":"Escote redondo - Estilo clasico - Composición de Algodón 100%.", "imagen":"D_NQ_NP_2X_772852-MLA48593825651_122021-F.webp", "precio":700},
+    {"id":4, "nombre":"Remera corta algodon combinado.", "descripcion":"Escote redondo - Estilo clasico - Composición de Algodón 100%.", "imagen":"D_NQ_NP_2X_775402-MLA47747469265_102021-F.webp"},
+    {"id":5, "nombre":"Remera corta spum.", "descripcion":"Escote redondo - Estilo Slim fit, se ajusta suavemente en brazos, torso y en cintura especialmente - Composición de Algodón 70% y Elastano 30%", "imagen":"D_NQ_NP_2X_844443-MLA44794673997_022021-F.webp"},
+    {"id":5, "nombre":"Remera corta algodon rib color.", "descripcion":"Escote redondo - Estilo clasico - Composición de Algodón 100%.", "imagen":"D_NQ_NP_2X_926606-MLA47747490683_102021-F.webp"}
+]

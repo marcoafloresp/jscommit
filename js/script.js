@@ -119,6 +119,35 @@ const coloresRemeras = [
     {id:17, vinilo:"verde claro", imagen:"verdeclaro.png", precio: 1050},
     {id:18, vinilo:"violeta", imagen:"violeta.png", precio: 1050},
     {id:19, vinilo:"fuscia", imagen:"fucsia.jpeg", precio: 1050},
+    {id:20, vinilo:"negro", imagen:"negro.png", precio: 1050},
+    {id:21, vinilo:"blanco", imagen:"blanco.jpeg", precio: 1050},
+    {id:22, vinilo:"amarillo", imagen:"amarillo.png", precio: 1050},
+    {id:23, vinilo:"azul cielo", imagen:"azulcielo.png", precio: 1050},
+    {id:24, vinilo:"bordo", imagen:"bordo.jpeg", precio: 1050},
+    {id:25, vinilo:"francia", imagen:"francia.png", precio: 1050},
+    {id:26, vinilo:"gris claro", imagen:"grisclaro.png", precio: 1050},
+    {id:27, vinilo:"limon", imagen:"limon.jpeg", precio: 1050},
+    {id:28, vinilo:"marino", imagen:"marino.png", precio: 1050},
+    {id:29, vinilo:"naranja", imagen:"naranja.png", precio: 1050},
+    {id:30, vinilo:"oro", imagen:"oro.png", precio: 1050},
+    {id:31, vinilo:"piel", imagen:"piel.jpeg", precio: 1050},
+    {id:32, vinilo:"plata", imagen:"plata.png", precio: 1050},
+    {id:33, vinilo:"rojo", imagen:"rojo.png", precio: 1050},
+    {id:34, vinilo:"rosa", imagen:"rosa.png", precio: 1050},
+    {id:35, vinilo:"verde", imagen:"verde.png", precio: 1050},
+    {id:36, vinilo:"verde claro", imagen:"verdeclaro.png", precio: 1050},
+    {id:37, vinilo:"violeta", imagen:"violeta.png", precio: 1050},
+    {id:38, vinilo:"fuscia", imagen:"fucsia.jpeg", precio: 1050},
+    {id:39, vinilo:"rojo", imagen:"rojo.png", precio: 1050},
+    {id:40, vinilo:"rosa", imagen:"rosa.png", precio: 1050},
+    {id:41, vinilo:"verde", imagen:"verde.png", precio: 1050},
+    {id:42, vinilo:"verde claro", imagen:"verdeclaro.png", precio: 1050},
+    {id:43, vinilo:"violeta", imagen:"violeta.png", precio: 1050},
+    {id:44, vinilo:"fuscia", imagen:"fucsia.jpeg", precio: 1050},
+    {id:45, vinilo:"amarillo", imagen:"amarillo.png", precio: 1050},
+    {id:46, vinilo:"azul cielo", imagen:"azulcielo.png", precio: 1050},
+    {id:47, vinilo:"bordo", imagen:"bordo.jpeg", precio: 1050},
+    {id:48, vinilo:"francia", imagen:"francia.png", precio: 1050},
 ]
 
 // seccion localStorage
@@ -172,7 +201,7 @@ function renderColores(){
     
     coloresRemeras.forEach((coloresR) => {
         datosCard += `
-        <div id="${coloresR.id}" class=" coloresCont col-md-2">
+        <div id="${coloresR.id}" class=" coloresCont col-md-2 p-1">
         <div class="card text-bg-warning bg-transparent border-success mb-3 p-2 text-center">
         <img src="imagenes/${coloresR.imagen}" class="card-img-top rounded-circle" alt="${coloresR.vinilo}">
         <div class="card-body">
@@ -214,6 +243,40 @@ function sumarACarrito() {
       });
     });
   }
+
+// fetch json
+
+fetch('remeras.json')
+.then((respuesta) => respuesta.json())
+.then((datos) => {
+    const resultado1 = document.getElementById("resultado1");
+    datos.forEach(valor => {
+        //console.log(valor);
+        let columna = document.createElement("div");
+        columna.className = "col-12";
+        let div_padre = document.createElement("div");
+        div_padre.className = "card mt-2 p-1 border border-2 border-secondary";
+        let div_hijo1 = document.createElement("div");
+        div_hijo1.className = "card-header bg-black text-white text-center p-1";
+        let div_hijo2 = document.createElement("div");
+        div_hijo2.className = "card-body text-center text-muted small";
+        let parrafo = document.createElement("p");
+        div_hijo1.innerHTML = `${valor.nombre}`;
+        parrafo.innerText = valor.descripcion;
+        let imagen = document.createElement("img");
+        imagen.src = "images/" + valor.imagen;
+        imagen.alt = valor.nombre;
+        imagen.width = 160;
+        imagen.className = "img-fluid";
+        div_hijo2.appendChild(parrafo);
+        div_hijo2.appendChild(imagen);
+        div_padre.appendChild(div_hijo1);
+        div_padre.appendChild(div_hijo2);
+        columna.appendChild(div_padre);
+        resultado1.appendChild(columna);
+    });
+})
+
 //llamado funciones
 guardarColoresRemLS(coloresRemeras);
 renderColores();

@@ -4,6 +4,12 @@ html {
     body {
     margin:0;
     }
+    .tituloRemera{
+      font-size: larger;
+      text-align: center;
+      background-color: black;
+      color:aliceblue;
+    }
     .bg {
     animation:slide 3s ease-in-out infinite alternate;
     background-image: linear-gradient(-60deg, hwb(0 87% 13%) 50%, hsl(0, 0%, 74%) 50%);
