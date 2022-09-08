@@ -262,7 +262,7 @@ function sumarACarrito() {
 
 // fetch json
 
-fetch('remeras.json')
+fetch('../remeras.json')
 .then((respuesta) => respuesta.json())
 .then((datos) => {
   const resultado1 = document.getElementById("resultado1");
