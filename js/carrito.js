@@ -5,7 +5,7 @@ function renderColoresRemCarrito(){
     
     if(coloresRemeras.length ==0){
       datosCard = `<div class="alert alert-light text-center" role="alert">
-      No hay material agregado al carrito., por favor regrese y seleccione para continuar con el pedido.
+      No hay material agregado al carrito, por favor regrese al inicio y seleccione para seleccionar el pedido.
       </div>`
     }else{datosCard += `<table class="table table-success table-hover>"
         <tr>
